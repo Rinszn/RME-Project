@@ -2,7 +2,7 @@
   "name": "v2-rme",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rinszn.github.io/v2RME",
+"homepage": "https://rinszn.github.io/RME-Project",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
