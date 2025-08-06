@@ -24,7 +24,7 @@ const [showSignupForm, setShowSignupForm] = useState(false);
     window.history.replaceState(null, '', window.location.pathname + window.location.search);
   };
 
- useEffect(() => {
+  useEffect(() => {
   AOS.init({ once: true, duration: 800 });
 
   const handleLoad = () => {
@@ -62,21 +62,8 @@ const [showSignupForm, setShowSignupForm] = useState(false);
     window.removeEventListener('load', handleLoad);
     clearTimeout(fallbackTimeout);
   };
+}, []);
 
-
-
-    window.addEventListener('load', handleLoad);
-
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-
-    window.scrollTo(0, 0);
-
-    return () => {
-      window.removeEventListener('load', handleLoad);
-    };
-  }, []);
 
 useEffect(() => {
   const sectionIds = ['features', 'how-it-works', 'pricing', 'contact'];
