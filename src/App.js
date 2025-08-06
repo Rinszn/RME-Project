@@ -25,27 +25,9 @@ const [showSignupForm, setShowSignupForm] = useState(false);
   };
 
   useEffect(() => {
-  AOS.init({ once: true, duration: 800 });
+    AOS.init({ once: true, duration: 800 });
 
-  const handleLoad = () => {
-    document.body.style.opacity = '1';
-
-    const pl = document.getElementById('preloader');
-    if (pl) {
-      pl.classList.add('fade-out');
-    }
-
-    const fadeDuration = 500;
-    setTimeout(() => setIsReady(true), fadeDuration);
-  };
-
-  // Listen for window load
-  window.addEventListener('load', handleLoad);
-
-  // ✅ Fallback: forcibly trigger if not loaded in 5 seconds
-  const fallbackTimeout = setTimeout(() => {
-    if (document.body.style.opacity !== '1') {
-      console.warn('Fallback triggered: forcing preloader removal');
+    const handleLoad = () => {
       document.body.style.opacity = '1';
 
       const pl = document.getElementById('preloader');
@@ -53,16 +35,24 @@ const [showSignupForm, setShowSignupForm] = useState(false);
         pl.classList.add('fade-out');
       }
 
-      setTimeout(() => setIsReady(true), 500);
-    }
-  }, 5000);
+      const fadeDuration = 500;
+      setTimeout(() => setIsReady(true), fadeDuration);
+    };
 
-  // Cleanup
-  return () => {
-    window.removeEventListener('load', handleLoad);
-    clearTimeout(fallbackTimeout);
-  };
-}, []);
+    window.addEventListener('load', handleLoad);
+
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    window.scrollTo(0, 0);
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
+  }, []);
+
+
 
 
 useEffect(() => {
