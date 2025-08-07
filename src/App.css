@@ -1,55 +1,19 @@
-:root {
-  --rme-accent: #d48b99; /* example: elegant blush */
-}
+.hero { min-height: 80vh; display: flex; align-items: center; }
+.project-card img { object-fit: cover; height: 200px; }
+.client-quote { font-style: italic; }
 
-body {
-  opacity: 0;
-  transition: opacity 0.7s ease-in-out;
-  padding-top: 70px;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.hero {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.hero .btn-primary {
-  background-color: #ff0000;
-  border: none;
-}
-
-.project-card img {
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.client-quote {
-  font-style: italic;
-}
+body { opacity: 0; transition: opacity .7s ease-in-out; padding-top: 70px; }
+html { scroll-behavior: smooth; }
 
 #preloader {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: fixed; inset: 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
   background: #ffffff;
   z-index: 1050;
-  transition: opacity 0.4s ease;
+  transition: opacity .4s ease;
 }
 
+/* Fade out animation */
 #preloader.fade-out {
   opacity: 0;
   transition: opacity 0.6s ease;
@@ -78,12 +42,13 @@ html {
   font-weight: 400;
   transition: font-weight 0.2s ease;
 }
-
 .navbar-nav .nav-link.active {
   font-weight: 400;
-  color: #ff0000 !important;
+  color: #ff0000 !important; /* Make it red */
   opacity: 1 !important;
 }
+
+
 
 #pricing .card-plan {
   background: #fff;
@@ -93,7 +58,6 @@ html {
   text-align: center;
   transition: all 0.3s ease;
   height: 100%;
-  margin-bottom: 1rem;
 }
 
 #pricing .card-plan:hover {
@@ -163,76 +127,28 @@ html {
   transform: scale(1.03);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .card-plan.pro:hover {
   transform: scale(1.05);
   box-shadow: 0 0 0 6px rgba(212, 139, 153, 0.3);
 }
-
+:root {
+  --rme-accent: #d48b99; /* example: elegant blush */
+}
 .btn-primary {
   background-color: black;
   border-color: var(--rme-accent);
 }
-
 .btn-primary:hover {
   background-color: #ff0000;
   border-color: #ff0000;
 }
 
+
+.hero .btn-primary {
+  background-color: #ff0000;
+  border: none;
+}
+
 footer a:hover {
   color: #ff0000 !important;
-}
-
-/* -----------------------
-   Responsive Breakpoints
------------------------- */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem 1rem;
-  }
-
-  .navbar .nav-link {
-    font-size: 1rem;
-    padding: 0.5rem 0.75rem;
-  }
-
-  .navbar .btn-dark {
-    padding: 0.4rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  #pricing .card-plan {
-    padding: 1.5rem 1rem;
-  }
-
-  .card-plan h4 {
-    font-size: 1.25rem;
-  }
-
-  .card-plan p {
-    font-size: 1rem;
-  }
-
-  .card-plan li {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 1rem 0.5rem;
-  }
-
-  .btn-primary,
-  .btn-dark {
-    width: 100%;
-    text-align: center;
-  }
-
-  #pricing .card-plan {
-    padding: 1rem;
-  }
 }
