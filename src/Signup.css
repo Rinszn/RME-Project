@@ -221,3 +221,20 @@ body {
     width: 100%;
   }
 }
+
+/* Footer Close Button */
+.btn-outline-secondary {
+  background: transparent;
+  color: #dc3545; /* a clear red to signal exit */
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: 1px solid #dc3545;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-secondary:hover {
+  background: #dc3545;
+  color: white;
+}
