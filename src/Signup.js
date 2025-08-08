@@ -8,7 +8,7 @@ const steps = [
   { title: 'SUMMARY' },
 ];
 
-const Signup = () => {
+const Signup = ({ onClose }) => { // ✅ Accept onClose prop here
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
@@ -192,23 +192,33 @@ const Signup = () => {
           <div className="sidebar-graphic"></div>
         </div>
 
-      {/* Dynamic Right Panel */}
-<div className="signup-form-area">
-  <div className="form-content">
-    {renderStepContent()}
-  </div>
-  <div className="button-row">
-    {step > 0 && (
-      <button type="button" className="btn-secondary" onClick={prev}>
-        Go Back
-      </button>
-    )}
-    <button type="button" className="btn-primary" onClick={next}>
-      {step === steps.length - 1 ? 'Submit' : 'Next Step'}
-    </button>
-  </div>
-</div>
+        {/* Dynamic Right Panel */}
+        <div className="signup-form-area">
+          <div className="form-content">
+            {renderStepContent()}
+          </div>
+          <div className="button-row">
 
+             {/* ✅ Close button in footer */}
+            {onClose && (
+              <button type="button" className="btn-outline-secondary" onClick={onClose}>
+                Close
+              </button>
+            )}
+            
+            {step > 0 && (
+              <button type="button" className="btn-secondary" onClick={prev}>
+                Go Back
+              </button>
+            )}
+
+           
+
+            <button type="button" className="btn-primary" onClick={next}>
+              {step === steps.length - 1 ? 'Submit' : 'Next Step'}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
