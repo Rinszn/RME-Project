@@ -25,32 +25,31 @@ const [showSignupForm, setShowSignupForm] = useState(false);
   };
 
   useEffect(() => {
-    AOS.init({ once: true, duration: 800 });
+  AOS.init({ once: true, duration: 800 });
 
-    const handleLoad = () => {
-      document.body.style.opacity = '1';
+  const handleLoad = () => {
+    document.body.style.opacity = '1';
+    const pl = document.getElementById('preloader');
+    if (pl) pl.classList.add('fade-out');
+    setTimeout(() => setIsReady(true), 500);
+  };
 
-      const pl = document.getElementById('preloader');
-      if (pl) {
-        pl.classList.add('fade-out');
-      }
+  const fallback = setTimeout(handleLoad, 2000); // fallback for mobile
+  window.addEventListener('load', () => {
+    clearTimeout(fallback);
+    handleLoad();
+  });
 
-      const fadeDuration = 500;
-      setTimeout(() => setIsReady(true), fadeDuration);
-    };
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
 
-    window.addEventListener('load', handleLoad);
-
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-
-    window.scrollTo(0, 0);
-
-    return () => {
-      window.removeEventListener('load', handleLoad);
-    };
-  }, []);
+  return () => {
+    clearTimeout(fallback);
+    window.removeEventListener('load', handleLoad);
+  };
+}, []);
 
 
 
