@@ -16,7 +16,7 @@ body {
 .signup-container {
   display: flex;
   width: 900px;
-  height: 600px; /* ✅ Fixed height to prevent resize */
+  min-height: 600px; /* ✅ gives space but still allows growth */
   background: white;
   border-radius: 15px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
@@ -238,3 +238,5 @@ body {
   background: #dc3545;
   color: white;
 }
+
+
