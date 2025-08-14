@@ -1,0 +1,29 @@
+.login-wrapper {
+  max-width: 900px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.login-image {
+  background-image: url("https://scontent.fmnl36-1.fna.fbcdn.net/v/t39.30808-6/421640352_359480300045654_8870607602980438466_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHHCehHG2_Qj9__mLJKPRAGKDOWphXXhBEoM5amFdeEEe1s-wU6rrHhqcdPbPUMPyu9b1CUabUBjukWFJyR-7xy&_nc_ohc=fKCgjoGkttwQ7kNvwHrXNsr&_nc_oc=Admuzc2LGM_D9rRAb9mQyYJzAUo_iH9Qmb11IIzIbBHc_tSaD1wj4TW3GNprr80nPDU&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fmnl36-1.fna&_nc_gid=KRTUrBdvX1GqBOqPP_I_4w&oh=00_AfURcVhcZ7dNegFbGC8fGtrclW5qgEkwIMQeQfHNCYrw0A&oe=68A36122");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-btn {
+  background: linear-gradient(to right, #000, #444);
+  border-radius: 50px;
+  color: white;
+}
+
+.login-btn:hover {
+  background: linear-gradient(to right, #111, #555);
+}
+
+.login-toast-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 2000;
+}
