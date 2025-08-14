@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/RME-Project/static/css/main.0883c7f0.css",
-    "main.js": "/RME-Project/static/js/main.1f59d36b.js",
+    "main.css": "/RME-Project/static/css/main.7d6a6160.css",
+    "main.js": "/RME-Project/static/js/main.0ea335a2.js",
     "static/js/453.12ffcd69.chunk.js": "/RME-Project/static/js/453.12ffcd69.chunk.js",
     "index.html": "/RME-Project/index.html",
-    "main.0883c7f0.css.map": "/RME-Project/static/css/main.0883c7f0.css.map",
-    "main.1f59d36b.js.map": "/RME-Project/static/js/main.1f59d36b.js.map",
+    "main.7d6a6160.css.map": "/RME-Project/static/css/main.7d6a6160.css.map",
+    "main.0ea335a2.js.map": "/RME-Project/static/js/main.0ea335a2.js.map",
     "453.12ffcd69.chunk.js.map": "/RME-Project/static/js/453.12ffcd69.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0883c7f0.css",
-    "static/js/main.1f59d36b.js"
+    "static/css/main.7d6a6160.css",
+    "static/js/main.0ea335a2.js"
   ]
 }
