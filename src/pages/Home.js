@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Link } from 'react-router-dom';
 import Login from '../pages/Login';
+import ReCAPTCHA from "react-google-recaptcha";
 
 
 function Home() {
@@ -14,6 +15,7 @@ function Home() {
   const [activeSection, setActiveSection] = useState('');
   const [showSignupForm, setShowSignupForm] = useState(false);
 const [showLoginForm, setShowLoginForm] = useState(false);
+const [recaptchaValue, setRecaptchaValue] = useState(null);
 
   const scrollToSection = (e, id) => {
     e.preventDefault();
@@ -94,6 +96,41 @@ const [showLoginForm, setShowLoginForm] = useState(false);
     document.body.style.overflow = showSignupForm ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [showSignupForm]);
+
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!recaptchaValue) {
+    alert("Please verify that you are not a robot.");
+    return;
+  }
+
+  const formData = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    message: e.target.message.value,
+    token: recaptchaValue
+  };
+
+  try {
+    const res = await fetch("http://localhost:5000/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert("Message sent successfully!");
+    } else {
+      alert("reCAPTCHA verification failed!");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong.");
+  }
+};
+
 
  return (
     <>
@@ -329,23 +366,36 @@ const [showLoginForm, setShowLoginForm] = useState(false);
       <h2 className="text-center mb-5" data-aos="fade-up">Get in Touch</h2>
       <div className="row justify-content-center">
         <div className="col-md-8">
-          <form>
-            <div className="mb-3" data-aos="fade-up" data-aos-delay="100">
-              <label htmlFor="name" className="form-label">Name</label>
-              <input type="text" id="name" className="form-control" placeholder="Your name" required />
-            </div>
-            <div className="mb-3" data-aos="fade-up" data-aos-delay="200">
-              <label htmlFor="email" className="form-label">Email</label>
-              <input type="email" id="email" className="form-control" placeholder="you@example.com" required />
-            </div>
-            <div className="mb-4" data-aos="fade-up" data-aos-delay="300">
-              <label htmlFor="message" className="form-label">Message</label>
-              <textarea id="message" rows="5" className="form-control" placeholder="How can we help you?" required></textarea>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="400">
-              <button type="submit" className="btn btn-primary px-4 rounded-pill">Send Message</button>
-            </div>
-          </form>
+    <form onSubmit={handleSubmit}>
+  <div className="mb-3" data-aos="fade-up" data-aos-delay="100">
+    <label htmlFor="name" className="form-label">Name</label>
+    <input type="text" id="name" className="form-control" placeholder="Your name" required />
+  </div>
+  
+  <div className="mb-3" data-aos="fade-up" data-aos-delay="200">
+    <label htmlFor="email" className="form-label">Email</label>
+    <input type="email" id="email" className="form-control" placeholder="you@example.com" required />
+  </div>
+  
+  <div className="mb-4" data-aos="fade-up" data-aos-delay="300">
+    <label htmlFor="message" className="form-label">Message</label>
+    <textarea id="message" rows="5" className="form-control" placeholder="How can we help you?" required></textarea>
+  </div>
+
+  {/* ✅ reCAPTCHA */}
+  <div className="mb-4" data-aos="fade-up" data-aos-delay="350">
+    <ReCAPTCHA
+      sitekey="6LebGKcrAAAAAAw1I3EfoNI0Rno1q26BhTSDORUK"
+      onChange={(value) => setRecaptchaValue(value)}
+    />
+  </div>
+
+  <div data-aos="fade-up" data-aos-delay="400">
+    <button type="submit" className="btn btn-primary px-4 rounded-pill">Send Message</button>
+  </div>
+</form>
+
+
         </div>
       </div>
     </div>
