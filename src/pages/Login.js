@@ -2,66 +2,35 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../pages/Login.css';
 import { FaEnvelope, FaLock, FaGoogle, FaFacebookF, FaTwitter } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
-  const [showToast, setShowToast] = useState(false);
-  const [toastType, setToastType] = useState('danger'); // 'danger' or 'success'
-
-  const triggerToast = (message, type = 'danger') => {
-    setToastMessage(message);
-    setToastType(type);
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
-  };
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      triggerToast('Please enter both email and password.', 'danger');
+      toast.error('Please enter both email and password.');
       return;
     }
     if (email === 'test@example.com' && password === 'password') {
-      triggerToast(`Welcome, ${email}! (Remember me: ${remember})`, 'success');
+      toast.success(`Welcome, ${email}! (Remember me: ${remember})`);
       setTimeout(() => {
         if (onClose) onClose();
       }, 1500);
     } else {
-      triggerToast('Invalid email or password.', 'danger');
+      toast.error('Invalid email or password.');
     }
   };
 
   return (
     <>
-      {/* Toast container */}
-      <div className="login-toast-container">
-        <div
-          className={`toast align-items-center text-white bg-${toastType} border-0 ${showToast ? 'show' : 'hide'}`}
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-        >
-          <div className="d-flex">
-            <div className="toast-body">{toastMessage}</div>
-            <button
-              type="button"
-              className="btn-close btn-close-white me-2 m-auto"
-              onClick={() => setShowToast(false)}
-              aria-label="Close"
-            ></button>
-          </div>
-        </div>
-      </div>
-
-      {/* Login layout */}
       <div className="row g-0 login-wrapper">
-        {/* Left Side - Image */}
         <div className="col-md-6 d-none d-md-block login-image"></div>
 
-        {/* Right Side - Form */}
         <div className="col-md-6 bg-white p-5 d-flex flex-column justify-content-center position-relative">
           <button
             type="button"
@@ -70,7 +39,9 @@ const Login = ({ onClose }) => {
             onClick={onClose}
           ></button>
 
-          <h3 className="fw-bold mb-1">Welcome back <span role="img" aria-label="wave">👋</span></h3>
+          <h3 className="fw-bold mb-1">
+            Welcome back <span role="img" aria-label="wave">👋</span>
+          </h3>
           <p className="text-muted mb-4">Sign in to RME Salon</p>
 
           <form onSubmit={handleLogin}>

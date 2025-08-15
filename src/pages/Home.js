@@ -8,6 +8,8 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import Login from '../pages/Login';
 import ReCAPTCHA from "react-google-recaptcha";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function Home() {
@@ -101,7 +103,7 @@ const [recaptchaValue, setRecaptchaValue] = useState(null);
   const handleSubmit = async (e) => {
   e.preventDefault();
   if (!recaptchaValue) {
-    alert("Please verify that you are not a robot.");
+    toast.warning("Please verify that you are not a robot.");
     return;
   }
 
@@ -121,15 +123,16 @@ const [recaptchaValue, setRecaptchaValue] = useState(null);
 
     const data = await res.json();
     if (data.success) {
-      alert("Message sent successfully!");
+      toast.success("Message sent successfully!");
     } else {
-      alert("reCAPTCHA verification failed!");
+      toast.error("reCAPTCHA verification failed!");
     }
   } catch (err) {
     console.error(err);
-    alert("Something went wrong.");
+    toast.error("Something went wrong.");
   }
 };
+
 
 
  return (
@@ -369,17 +372,38 @@ const [recaptchaValue, setRecaptchaValue] = useState(null);
     <form onSubmit={handleSubmit}>
   <div className="mb-3" data-aos="fade-up" data-aos-delay="100">
     <label htmlFor="name" className="form-label">Name</label>
-    <input type="text" id="name" className="form-control" placeholder="Your name" required />
+    <input 
+      type="text" 
+      id="name" 
+      name="name"  // ✅ Added
+      className="form-control" 
+      placeholder="Your name" 
+      required 
+    />
   </div>
   
   <div className="mb-3" data-aos="fade-up" data-aos-delay="200">
     <label htmlFor="email" className="form-label">Email</label>
-    <input type="email" id="email" className="form-control" placeholder="you@example.com" required />
+    <input 
+      type="email" 
+      id="email" 
+      name="email"  // ✅ Added
+      className="form-control" 
+      placeholder="you@example.com" 
+      required 
+    />
   </div>
   
   <div className="mb-4" data-aos="fade-up" data-aos-delay="300">
     <label htmlFor="message" className="form-label">Message</label>
-    <textarea id="message" rows="5" className="form-control" placeholder="How can we help you?" required></textarea>
+    <textarea 
+      id="message" 
+      name="message"  // ✅ Added
+      rows="5" 
+      className="form-control" 
+      placeholder="How can we help you?" 
+      required
+    ></textarea>
   </div>
 
   {/* ✅ reCAPTCHA */}
@@ -391,9 +415,12 @@ const [recaptchaValue, setRecaptchaValue] = useState(null);
   </div>
 
   <div data-aos="fade-up" data-aos-delay="400">
-    <button type="submit" className="btn btn-primary px-4 rounded-pill">Send Message</button>
+    <button type="submit" className="btn btn-primary px-4 rounded-pill">
+      Send Message
+    </button>
   </div>
 </form>
+
 
 
         </div>
