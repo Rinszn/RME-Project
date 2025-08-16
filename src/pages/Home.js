@@ -8,7 +8,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import Login from '../pages/Login';
 import ReCAPTCHA from "react-google-recaptcha";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -16,8 +16,9 @@ function Home() {
   const [isReady, setIsReady] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [showSignupForm, setShowSignupForm] = useState(false);
-const [showLoginForm, setShowLoginForm] = useState(false);
-const [recaptchaValue, setRecaptchaValue] = useState(null);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+const [isTogglerOpen, setIsTogglerOpen] = useState(false);
 
   const scrollToSection = (e, id) => {
     e.preventDefault();
@@ -218,9 +219,17 @@ const [recaptchaValue, setRecaptchaValue] = useState(null);
             RME SALON
           </Link>
 
-              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
-                <span className="navbar-toggler-icon"></span>
-              </button>
+<button
+  className={`navbar-toggler ${isTogglerOpen ? 'open' : ''}`}
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navCollapse"
+  onClick={() => setIsTogglerOpen(!isTogglerOpen)}
+>
+  <span className="navbar-toggler-icon"></span>
+</button>
+
+
               <div id="navCollapse" className="collapse navbar-collapse">
    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
   {[

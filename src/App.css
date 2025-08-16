@@ -49,6 +49,55 @@ html { scroll-behavior: smooth; }
 }
 
 
+/* Remove Bootstrap default toggler icon background */
+.navbar-toggler-icon {
+  background-image: none !important; /* remove the black/gray default */
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  display: block;
+  position: relative;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+  top: -10px;
+}
+
+.navbar-toggler-icon::after {
+  top: 10px;
+}
+
+/* Animate to X when open */
+.navbar-toggler.open .navbar-toggler-icon {
+  background-color: transparent; /* hide middle line */
+}
+
+.navbar-toggler.open .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.navbar-toggler.open .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+
 
 #pricing .card-plan {
   background: #fff;
