@@ -2,7 +2,8 @@
   "name": "v2-rme",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rinszn.github.io/RME-Project",
+  "homepage": ".",
+    "_comment_for_github_pages": "Change homepage to 'https://rinszn.github.io/RME-Project' before deploying to GitHub Pages",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -10,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.7",
+    "firebase": "^12.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-google-recaptcha": "^3.1.0",
@@ -24,8 +26,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+
+    "predeploy-fb": "npm run build",
+    "deploy-fb": "firebase deploy --only hosting",
+
+    "predeploy-gh": "npm run build",
+    "deploy-gh": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,3 +55,4 @@
     "gh-pages": "^6.3.0"
   }
 }
+

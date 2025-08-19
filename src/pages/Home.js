@@ -134,6 +134,23 @@ const [isTogglerOpen, setIsTogglerOpen] = useState(false);
   }
 };
 
+useEffect(() => {
+  if (showLoginForm || showSignupForm) {
+    setIsTogglerOpen(false); // close navbar button
+
+    const navCollapse = document.getElementById('navCollapse');
+    if (navCollapse && navCollapse.classList.contains('show')) {
+      navCollapse.classList.remove('show'); // close navbar
+    }
+
+    // Lock body scroll
+    document.body.style.overflow = 'hidden';
+  } else {
+    // Unlock body scroll when modal is closed
+    document.body.style.overflow = 'auto';
+  }
+}, [showLoginForm, showSignupForm]);
+
 
 
  return (
@@ -330,47 +347,51 @@ const [isTogglerOpen, setIsTogglerOpen] = useState(false);
     </div>
   </section>
 
-      
-
-  {/* Subscription Plans */}
-  <section id="pricing" className="container py-5">
-    <div className="text-center mb-5">
-      <h2 className="fw-bold" data-aos="fade-up">Flexible Subscription Plans</h2>
-      <p className="text-muted" data-aos="fade-up" data-aos-delay="100">
-        Whether you're a single branch or a growing chain — we have a plan for you.
-      </p>
-    </div>
-    <div className="row g-4 justify-content-center">
-      <div className="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-  <div className="card-plan">
-    <h4 className="fw-bold">Starter</h4>
-    <p className="text-muted">₱0,000 / month</p>
-    <ul>
-      <li><i className="bi bi-check-circle me-2 text-success"></i>1 Branch</li>
-      <li><i className="bi bi-check-circle me-2 text-success"></i>10 Staff</li>
-      <li><i className="bi bi-check-circle me-2 text-success"></i>Basic Reports</li>
-      <li><i className="bi bi-check-circle me-2 text-success"></i>Email Support</li>
-    </ul>
-    <button className="btn btn-outline-light mt-4">Get Started</button>
+      {/* Subscription Plans */}
+<section id="pricing" className="container py-5">
+  <div className="text-center mb-5">
+    <h2 className="fw-bold">Flexible Subscription Plans</h2>
+    <p className="text-muted">
+      Whether you're a single branch or a growing chain — we have a plan for you.
+    </p>
   </div>
-</div>
 
-<div className="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-  <div className="card-plan pro">
-    <h4 className="fw-bold">Professional</h4>
-    <p className="text-light">₱0,000 / month</p>
-    <ul>
-      <li><i className="bi bi-check-circle-fill me-2 text-white"></i>Up to 5 Branches</li>
-      <li><i className="bi bi-check-circle-fill me-2 text-white"></i>Unlimited Staff</li>
-      <li><i className="bi bi-check-circle-fill me-2 text-white"></i>Advanced Reports</li>
-      <li><i className="bi bi-check-circle-fill me-2 text-white"></i>Priority Support</li>
-    </ul>
-    <button className="btn btn-light mt-4">Choose Plan</button>
-  </div>
-</div>
+  <div className="row g-4 justify-content-center">
 
+    {/* Starter Plan */}
+    <div className="col-md-4">
+      <div className="card-plan p-4 text-center h-100 border border-dark">
+        <h3 className="price">₱0,000<span className="fs-6"> /month</span></h3>
+        <p className="small text-muted">1 Branch plan</p>
+        <button className="btn btn-outline-primary w-100 mb-3 ">Choose Plan</button>
+        <ul className="list-unstyled text-start">
+          <li>✔ 1 Branch</li>
+          <li>✔ 10 Staff</li>
+          <li>✔ Basic Reports</li>
+          <li>✔ Email Support</li>
+        </ul>
+      </div>
     </div>
-  </section>
+
+    {/* Professional Plan (highlighted) */}
+    <div className="col-md-4">
+      <div className="card-plan pro p-4 text-center h-100">
+        <h3 className="price">₱0,000<span className="fs-6"> /month</span></h3>
+        <p className="small">For growing businesses</p>
+        <button className="btn btn-primary w-100 mb-3">Choose Plan</button>
+        <ul className="list-unstyled text-start">
+          <li>✔ Up to 5 Branches</li>
+          <li>✔ Unlimited Staff</li>
+          <li>✔ Advanced Reports</li>
+          <li>✔ Priority Support</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
   {/* Contact Section */}
   <section id="contact" className="py-5 bg-light">

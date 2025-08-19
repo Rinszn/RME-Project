@@ -5,14 +5,18 @@ import Home from './pages/Home';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Automatically detect if hosted on GitHub Pages
+const isGithubPages = window.location.hostname.includes('github.io');
+const basename = isGithubPages ? '/RME-Project' : '/';
+
 function App() {
   return (
-    <Router basename="/RME-Project">
+    <Router basename={basename}>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
       
-    <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -22,9 +26,8 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored" // Makes toasts have colored backgrounds based on type
+        theme="colored"
       />
-
     </Router>
   );
 }

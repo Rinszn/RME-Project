@@ -97,89 +97,12 @@ html { scroll-behavior: smooth; }
   top: 0;
 }
 
-
-
-#pricing .card-plan {
-  background: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 1rem;
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  height: 100%;
+.navbar-collapse {
+  transition: opacity 0.3s ease, height 0.3s ease;
+  opacity: 1;
 }
 
-#pricing .card-plan:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
 
-#pricing .card-plan h4 {
-  font-size: 1.5rem;
-  margin-bottom: 0.25rem;
-}
-
-#pricing .card-plan p {
-  font-size: 1.1rem;
-  margin-bottom: 1.25rem;
-}
-
-#pricing .card-plan ul {
-  padding: 0;
-  list-style: none;
-  margin-bottom: 1rem;
-}
-
-#pricing .card-plan li {
-  font-size: 1rem;
-  color: #495057;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#pricing .card-plan.pro {
-  background: linear-gradient(145deg, #0d6efd, #084298);
-  color: #fff;
-  border: none;
-  position: relative;
-  overflow: hidden;
-}
-
-#pricing .card-plan.pro h4,
-#pricing .card-plan.pro p,
-#pricing .card-plan.pro li {
-  color: #fff;
-}
-
-#pricing .btn {
-  border-radius: 50px;
-  padding: 0.5rem 1.5rem;
-  font-weight: 500;
-  transition: 0.3s ease;
-}
-
-#pricing .btn-outline-primary:hover {
-  background-color: #0d6efd;
-  color: #fff;
-}
-
-#pricing .btn-light:hover {
-  background-color: #e2e6ea;
-}
-
-.card-plan.pro {
-  background-color: var(--rme-accent);
-  color: white;
-  box-shadow: 0 0 0 3px rgba(212, 139, 153, 0.2);
-  transform: scale(1.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-plan.pro:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 0 6px rgba(212, 139, 153, 0.3);
-}
 :root {
   --rme-accent: #d48b99; /* example: elegant blush */
 }
@@ -200,4 +123,45 @@ html { scroll-behavior: smooth; }
 
 footer a:hover {
   color: #ff0000 !important;
+}
+
+
+/*
+Subscription Plans Section
+*/
+
+#pricing .card-plan {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+#pricing .card-plan:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+#pricing .price {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+#pricing .card-plan ul li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+#pricing .card-plan.pro {
+  border: 2px solid #0d6efd;
+  box-shadow: 0 0 12px rgba(13,110,253,0.2);
+}
+
+#pricing .btn {
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-weight: 500;
 }
